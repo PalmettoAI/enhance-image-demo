@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhance Image Med Spa — Lexington, SC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --black-soft: #111111;
+    --black-mid: #1a1a1a;
+    --black-light: #242424;
+    --rose: #c4956a;
+    --rose-light: #d4aa85;
+    --rose-pale: #f0ddd0;
+    --rose-blush: #faf3ee;
+    --white: #ffffff;
+    --off-white: #f8f4f0;
+    --text-dim: rgba(255,255,255,0.55);
+    --text-mid: rgba(255,255,255,0.75);
+    --rule: rgba(196,149,106,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+  /* DEMO BANNER */
+  .demo-banner {
+    background: var(--rose); color: var(--black); text-align: center; padding: 10px 20px;
+    font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; position: sticky; top: 0; z-index: 9999;
+  }
+  .demo-banner a { color: var(--black); font-weight: 700; text-decoration: underline; }
+
+  /* NAV */
+  nav {
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+    padding: 0 60px; display: flex; align-items: center; justify-content: space-between;
+    height: 70px; position: sticky; top: 37px; z-index: 100;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600;
+    color: var(--white); letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-size: 0.72rem; font-weight: 500; color: var(--text-dim); text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--rose-light); }
+  .nav-cta {
+    background: transparent; color: var(--rose); border: 1px solid var(--rose);
+    padding: 9px 24px; font-size: 0.7rem; font-weight: 600; text-decoration: none;
+    letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--rose); color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; background: var(--black); display: grid;
+    grid-template-columns: 1fr 480px; position: relative; overflow: hidden;
+  }
+  /* Decorative gradient orb */
+  .hero::before {
+    content: ''; position: absolute; top: -200px; left: 30%; width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(196,149,106,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 120px 80px; display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-kicker {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+  }
+  .hero-kicker::before { content: ''; width: 30px; height: 1px; background: var(--rose); }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .hero h1 em { font-style: italic; color: var(--rose-light); }
+  .hero h1 strong { font-weight: 600; display: block; }
+
+  .hero-rule { width: 50px; height: 1px; background: var(--rose); margin: 36px 0; opacity: 0.6; }
+
+  .hero-sub {
+    font-size: 0.95rem; color: var(--text-dim); line-height: 1.85; max-width: 440px;
+    margin-bottom: 52px; font-weight: 300; letter-spacing: 0.02em;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-rose {
+    background: var(--rose); color: var(--black); padding: 15px 36px; font-size: 0.72rem;
+    font-weight: 600; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn-rose:hover { background: var(--rose-light); transform: translateY(-2px); }
+  .btn-text {
+    color: var(--text-dim); font-size: 0.72rem; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s;
+    border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px;
+  }
+  .btn-text:hover { color: var(--rose-light); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 72px; padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .h-stat .n {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300;
+    color: var(--rose-light); line-height: 1;
+  }
+  .h-stat .l { font-size: 0.65rem; font-weight: 500; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+  /* HERO RIGHT — BOOKING */
+  .hero-right {
+    background: var(--black-soft); border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; padding: 80px 52px;
+    animation: slideIn 0.8s ease 0.3s both;
+  }
+
+  .book-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 10px; }
+  .book-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
+  .book-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 32px; line-height: 1.5; font-weight: 300; }
+  .book-rule { width: 100%; height: 1px; background: var(--rule); margin-bottom: 28px; }
+
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 7px; }
+  .fg input, .fg select {
+    width: 100%; padding: 13px 16px; background: var(--black-mid); border: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--white); outline: none;
+    transition: border-color 0.3s; -webkit-appearance: none;
+  }
+  .fg input:focus, .fg select:focus { border-color: var(--rose); }
+  .fg input::placeholder { color: rgba(255,255,255,0.2); }
+  .fg select option { background: var(--black-mid); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .btn-book-full {
+    width: 100%; background: var(--rose); color: var(--black); border: none;
+    padding: 16px; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; margin-top: 8px;
+    transition: background 0.3s;
+  }
+  .btn-book-full:hover { background: var(--rose-light); }
+
+  .book-privacy { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-align: center; margin-top: 14px; letter-spacing: 0.06em; }
+
+  .confirm-box { display: none; text-align: center; padding: 40px 0; }
+  .confirm-box .icon { font-size: 2.8rem; margin-bottom: 16px; }
+  .confirm-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--rose-light); margin-bottom: 8px; }
+  .confirm-box p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.65; }
+
+  /* SERVICES */
+  .services { background: var(--black-soft); padding: 120px 80px; }
+
+  .s-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
+  .s-header-left .eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 12px; }
+  .s-header-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; color: var(--white); line-height: 1.15; }
+  .s-header-left h2 em { font-style: italic; color: var(--rose-light); }
+  .s-header-right { font-size: 0.82rem; color: var(--text-dim); max-width: 280px; line-height: 1.7; font-weight: 300; text-align: right; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--rule); }
+
+  .svc {
+    border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-top: 1px solid var(--rule);
+    padding: 40px 32px; position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.4s;
+    cursor: default;
+  }
+  .svc.visible { opacity: 1; transform: translateY(0); }
+  .svc::before {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+    background: var(--rose); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .svc:hover { background: rgba(196,149,106,0.04); }
+  .svc:hover::before { transform: scaleX(1); }
+
+  .svc-num { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: var(--rose); opacity: 0.5; margin-bottom: 28px; }
+  .svc h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+  .svc p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.75; font-weight: 300; }
+
+  /* REBOOKING STRIP */
+  .rebook-strip {
+    background: var(--black); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    padding: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .rebook-left .eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
+  .rebook-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 20px; }
+  .rebook-left h2 em { font-style: italic; color: var(--rose-light); }
+  .rebook-left p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.85; font-weight: 300; }
+
+  .rebook-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .rm {
+    background: var(--black-soft); padding: 36px 28px; text-align: center;
+  }
+  .rm .big { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--rose-light); line-height: 1; margin-bottom: 8px; }
+  .rm .small { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* EXPERIENCE */
+  .experience { background: var(--rose-blush); padding: 120px 80px; }
+  .exp-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .exp-left .eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
+  .exp-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.2; margin-bottom: 20px; }
+  .exp-left h2 em { font-style: italic; }
+  .exp-left p { font-size: 0.9rem; color: #4a4040; line-height: 1.85; margin-bottom: 14px; font-weight: 300; }
+  .exp-left .btn-dark { display: inline-block; background: var(--black); color: var(--rose-light); padding: 14px 32px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; margin-top: 16px; transition: background 0.3s; }
+  .exp-left .btn-dark:hover { background: #222; }
+
+  .exp-right { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    padding: 28px 0; border-bottom: 1px solid rgba(196,149,106,0.25);
+    display: flex; gap: 24px; align-items: flex-start;
+    opacity: 0; transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .exp-item.visible { opacity: 1; transform: translateX(0); }
+  .exp-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .exp-item h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .exp-item p { font-size: 0.82rem; color: #5a5050; line-height: 1.65; font-weight: 300; }
+
+  /* REVIEWS */
+  .reviews { background: var(--black-mid); padding: 100px 80px; }
+  .reviews h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--white); margin-bottom: 56px; }
+  .reviews h2 em { font-style: italic; color: var(--rose-light); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+  .review {
+    background: var(--black-soft); padding: 40px 32px;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .review.visible { opacity: 1; transform: translateY(0); }
+  .review-stars { color: var(--rose); letter-spacing: 3px; font-size: 0.85rem; margin-bottom: 20px; }
+  .review-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; }
+  .review-author { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--black); padding: 120px 80px; text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .final-cta .eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 20px; }
+  .final-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+  .final-cta h2 em { font-style: italic; color: var(--rose-light); }
+  .final-cta p { font-size: 0.9rem; color: var(--text-dim); max-width: 460px; margin: 0 auto 48px; line-height: 1.8; font-weight: 300; }
+  .cta-pair { display: flex; gap: 16px; justify-content: center; }
+
+  /* FOOTER */
+  footer { background: var(--black-soft); border-top: 1px solid var(--rule); padding: 60px 80px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
+  .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+  .f-logo span { color: var(--rose); }
+  footer p, footer a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; line-height: 2.1; display: block; }
+  footer a:hover { color: var(--rose-light); }
+  footer h5 { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+  @media (max-width: 1000px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 80px 30px; }
+    .hero-right { padding: 40px 30px; border-left: none; border-top: 1px solid var(--rule); }
+    .services { padding: 60px 30px; }
+    .s-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .s-header-right { text-align: left; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .rebook-strip { grid-template-columns: 1fr; padding: 60px 30px; gap: 40px; }
+    .experience { padding: 60px 30px; }
+    .exp-inner { grid-template-columns: 1fr; gap: 40px; }
+    .reviews { padding: 60px 30px; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 0; }
+    .final-cta { padding: 80px 30px; }
+    footer { grid-template-columns: 1fr; padding: 40px 30px; gap: 32px; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🤖 PalmettoAI Demo — Built for Enhance Image Med Spa &nbsp;·&nbsp; <a href="mailto:tony@palmettoai.com">tony@palmettoai.com</a>
+</div>
+
+<nav>
+  <div class="nav-logo">Enhance <span>Image</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#experience">Our Approach</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#book" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">Medical Aesthetics · Lexington, South Carolina</div>
+    <h1>
+      <em>Refined.</em>
+      <strong>Radiant.</strong>
+      Results.
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Enhance Image Med Spa delivers physician-grade aesthetic treatments in a boutique setting. From Botox to body contouring — every treatment is tailored, every result is intentional.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-rose">Book a Consultation</a>
+      <a href="#services" class="btn-text">View Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="n">500+</div><div class="l">Happy Clients</div></div>
+      <div class="h-stat"><div class="n">12+</div><div class="l">Treatments Offered</div></div>
+      <div class="h-stat"><div class="n">5★</div><div class="l">Average Rating</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right" id="book">
+    <div class="book-label">Begin Your Journey</div>
+    <div class="book-title">Book a Consultation</div>
+    <div class="book-sub">Reserve your spot online. We'll confirm within 2 hours.</div>
+    <div class="book-rule"></div>
+
+    <div id="bookForm">
+      <div class="form-row">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="First"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Last"></div>
+      </div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="(803) 555-0100"></div>
+      <div class="fg">
+        <label>I'm Interested In</label>
+        <select>
+          <option>Botox / Dysport</option>
+          <option>Dermal Fillers</option>
+          <option>Laser Skin Resurfacing</option>
+          <option>Body Contouring</option>
+          <option>Chemical Peels</option>
+          <option>Microneedling</option>
+          <option>Skin Tightening</option>
+          <option>Not Sure — Free Consult</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Preferred Day</label>
+        <select>
+          <option>Weekday Morning</option>
+          <option>Weekday Afternoon</option>
+          <option>Saturday</option>
+          <option>Any Day Works</option>
+        </select>
+      </div>
+      <button class="btn-book-full" onclick="submitBook()">Reserve My Consultation →</button>
+      <div class="book-privacy">🔒 Private & Confidential · No Spam</div>
+    </div>
+
+    <div class="confirm-box" id="bookConfirm">
+      <div class="icon">✨</div>
+      <h4>You're on the list.</h4>
+      <p>We'll reach out within 2 hours to confirm your appointment. We look forward to meeting you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="s-header">
+    <div class="s-header-left">
+      <div class="eyebrow">Treatment Menu</div>
+      <h2>Where Science<br>Meets <em>Beauty</em></h2>
+    </div>
+    <div class="s-header-right">Every treatment at Enhance Image is performed by trained aesthetic professionals using FDA-approved technologies and products.</div>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc"><div class="svc-num">01</div><h4>Botox & Dysport</h4><p>Smooth fine lines and prevent new ones. Quick, precise, natural-looking results with zero downtime.</p></div>
+    <div class="svc"><div class="svc-num">02</div><h4>Dermal Fillers</h4><p>Restore volume, define lips, lift cheekbones. Hyaluronic acid fillers that work with your natural anatomy.</p></div>
+    <div class="svc"><div class="svc-num">03</div><h4>Laser Resurfacing</h4><p>Reduce wrinkles, sun damage, and uneven tone. Advanced laser technology for visible, lasting results.</p></div>
+    <div class="svc"><div class="svc-num">04</div><h4>Body Contouring</h4><p>Non-surgical fat reduction and skin tightening. Sculpt your silhouette without surgery or downtime.</p></div>
+    <div class="svc"><div class="svc-num">05</div><h4>Chemical Peels</h4><p>Resurface, brighten, and renew. Medical-grade peels customized to your skin type and goals.</p></div>
+    <div class="svc"><div class="svc-num">06</div><h4>Microneedling</h4><p>Stimulate collagen and transform skin texture. Pairs perfectly with PRP for supercharged results.</p></div>
+    <div class="svc"><div class="svc-num">07</div><h4>Skin Tightening</h4><p>Lift and firm without surgery. RF and ultrasound technology that delivers real structural results.</p></div>
+    <div class="svc"><div class="svc-num">08</div><h4>Skincare Memberships</h4><p>Monthly treatments at members-only pricing. Your skin at its best — consistently, affordably, automatically.</p></div>
+  </div>
+</section>
+
+<section class="rebook-strip">
+  <div class="rebook-left">
+    <div class="eyebrow">The Membership Difference</div>
+    <h2>Your next appointment<br>is already <em>booked.</em></h2>
+    <p>Our automated rebooking system reminds you before your results wear off, so you never have to start over. Members receive priority scheduling, exclusive pricing, and a personalized treatment calendar — all managed automatically.</p>
+  </div>
+  <div class="rebook-metrics">
+    <div class="rm"><div class="big">3×</div><div class="small">Higher Client Retention With Membership</div></div>
+    <div class="rm"><div class="big">24hr</div><div class="small">Auto Reminder Before Appointments</div></div>
+    <div class="rm"><div class="big">0</div><div class="small">No-Shows With Smart Reminders</div></div>
+    <div class="rm"><div class="big">30%</div><div class="small">Member Savings on All Treatments</div></div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="exp-inner">
+    <div class="exp-left">
+      <div class="eyebrow">Our Philosophy</div>
+      <h2>Aesthetics that <em>enhance</em> — not alter.</h2>
+      <p>We believe great aesthetic medicine starts with listening. Every client begins with a thorough consultation where we map your goals, assess your anatomy, and design a plan that enhances what's already there.</p>
+      <p>You won't leave looking like someone else. You'll leave looking like the best version of you.</p>
+      <a href="#book" class="btn-dark">Start With a Consultation</a>
+    </div>
+    <div class="exp-right">
+      <div class="exp-item">
+        <div class="exp-icon">💬</div>
+        <div><h5>Personalized Consultation</h5><p>Every new client gets a 1-on-1 consultation before any treatment. We map your goals and build a custom plan — no cookie-cutter protocols.</p></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-icon">🔬</div>
+        <div><h5>Medical-Grade Technology</h5><p>We use only FDA-cleared devices and physician-tested products. No corners cut on quality — ever.</p></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-icon">📱</div>
+        <div><h5>Automated Follow-Up</h5><p>After every treatment, you receive automated care instructions, a check-in message, and a rebooking reminder timed perfectly to your results.</p></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-icon">✨</div>
+        <div><h5>Membership Program</h5><p>Join our VIP membership for priority booking, monthly treatments, and members-only pricing on everything we offer.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <h2>What Our Clients <em>Say</em></h2>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I've been to other med spas and nothing compares. The consultation alone was worth it — they really listened to what I wanted and didn't oversell me on treatments I didn't need."</div>
+      <div class="review-author">— Ashley R., Lexington SC</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"The membership pays for itself. I used to forget to rebook and my results would fade. Now they text me before it happens. I've never looked more consistent."</div>
+      <div class="review-author">— Lauren M., Irmo SC</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Natural results that my husband noticed but couldn't place. That's exactly what I wanted. The team here has an eye for what enhances rather than changes you."</div>
+      <div class="review-author">— Christine B., Columbia SC</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="eyebrow">Ready to Begin?</div>
+  <h2>Your best skin is<br><em>one consultation away.</em></h2>
+  <p>New clients welcome. Consultations are complimentary. Book online in under 60 seconds.</p>
+  <div class="cta-pair">
+    <a href="#book" class="btn-rose">Book Online Now</a>
+    <a href="tel:8035550100" class="btn-text">Or Call Us Directly</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="f-logo">Enhance <span>Image</span></div>
+    <p>Lexington, South Carolina</p>
+    <p>📞 (803) 555-0100</p>
+    <p>✉ hello@enhanceimage.com</p>
+  </div>
+  <div>
+    <h5>Hours</h5>
+    <p>Mon–Fri: 9am–6pm</p>
+    <p>Saturday: 9am–2pm</p>
+    <p>Sunday: Closed</p>
+  </div>
+  <div>
+    <h5>Treatments</h5>
+    <a href="#services">Botox & Fillers</a>
+    <a href="#services">Laser Resurfacing</a>
+    <a href="#services">Body Contouring</a>
+    <a href="#services">Memberships</a>
+  </div>
+</footer>
+
+<script>
+  function submitBook() {
+    document.getElementById('bookForm').style.display = 'none';
+    document.getElementById('bookConfirm').style.display = 'block';
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 110);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.svc, .exp-item, .review').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
